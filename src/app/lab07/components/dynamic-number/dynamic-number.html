@@ -1,5 +1,5 @@
 <h3>
-  <span class="app-section-title">Section {{ number() }}</span>
+  <span class="app-section-title">Section {{ number() }} ({{ section().numbers.length }})</span>
   <button class="remove-btn" (click)="remove.emit()" [disabled]="!removable()">X</button>
 </h3>
 
