@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 
 import { DynamicContact } from '../../components/dynamic-contact/dynamic-contact';
-import { createContact } from '../../helpers';
+import { createContacts, toContacts } from '../../helpers';
 import { JsonPipe } from '@angular/common';
+import { ContactStorage } from '../../services/contact.storage';
 
 @Component({
   selector: 'app-example-update-page',
@@ -12,5 +13,14 @@ import { JsonPipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleUpdatePage {
-  protected readonly contacts = signal([createContact()]);
+  private readonly dataStorage = inject(ContactStorage);
+
+  protected readonly contacts = signal(createContacts(this.dataStorage.get() ?? undefined));
+
+  constructor() {
+    effect(() => {
+      const modelData = this.contacts();
+      this.dataStorage.set(toContacts(modelData));
+    });
+  }
 }

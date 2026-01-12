@@ -12,7 +12,7 @@ import { ContactModel } from '../../types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicContact {
-  readonly contacts = model([createContact()]);
+  readonly contacts = model<readonly ContactModel[]>([createContact()]);
 
   protected addContact(): void {
     this.contacts.update((contacts) => {

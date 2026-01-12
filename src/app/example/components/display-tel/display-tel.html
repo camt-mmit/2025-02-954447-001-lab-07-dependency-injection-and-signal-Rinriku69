@@ -1,1 +1,15 @@
-<p>display-tel works!</p>
+<header>
+  <h3>
+    Contact <span>{{ number() }}</span>
+    <span> {{ contact().name }}</span>
+  </h3>
+  <span>({{ contact().tels.length }})</span>
+</header>
+
+<ul>
+  @for (tel of contact().tels; track $index) {
+    <li>
+      <b>Tel {{ $index + 1 }}</b> <span> {{ tel }}</span>
+    </li>
+  }
+</ul>

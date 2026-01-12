@@ -14,7 +14,12 @@ export class DynamicNumber {
   readonly removable = input(true);
   readonly remove = output<void>();
   readonly number = input.required();
-  readonly total = computed(() => this.section().numbers.reduce((a, b) => a + b.value, 0));
+  readonly total = computed(() => {
+    const section = this.section();
+    const numbers = section?.numbers ?? [];
+
+    return numbers.reduce((a, b) => a + b.value, 0);
+  });
 
   addNumber() {
     this.section.update((s) => ({

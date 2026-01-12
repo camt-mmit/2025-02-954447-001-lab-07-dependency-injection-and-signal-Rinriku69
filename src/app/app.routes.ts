@@ -9,4 +9,5 @@ export const routes: Routes = [
   },
 
   { path: 'example', loadChildren: () => import('./example/routes') },
+  { path: 'lab', loadChildren: () => import('./lab07/routes') },
 ];
