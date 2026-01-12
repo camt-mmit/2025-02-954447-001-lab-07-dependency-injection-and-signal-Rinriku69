@@ -39,7 +39,7 @@ export class DynamicNumber {
     this.section.update((s) => {
       const numbers = s.numbers.map((n, i) => (i === index ? { value } : n));
 
-      return { numbers };
+      return { ...s, numbers };
     });
   }
 }
