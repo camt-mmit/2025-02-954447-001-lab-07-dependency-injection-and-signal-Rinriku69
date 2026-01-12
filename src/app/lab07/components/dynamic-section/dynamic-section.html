@@ -1,0 +1,15 @@
+<button (click)="addSection()" class="app-add-btn">+ Add Section</button>
+
+@for (section of sections(); track section) {
+  <app-dynamic-number
+    [number]="$index + 1"
+    [section]="section"
+    [removable]="$count > 1"
+    (sectionChange)="changeSection($index, $event)"
+    (remove)="removeSection($index)"
+  />
+}
+
+<div class="app-json-pipe">
+  <pre>{{ sections() | json }}</pre>
+</div>

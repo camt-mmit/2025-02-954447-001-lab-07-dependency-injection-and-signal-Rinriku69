@@ -1,0 +1,19 @@
+.app-add-btn {
+  margin-left: 20px;
+}
+
+.app-json-pipe {
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: rgb(233, 233, 233);
+}
+
+button {
+  &:hover {
+    scale: 1.2;
+  }
+  &:active {
+    scale: 0.8;
+  }
+}

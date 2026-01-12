@@ -1,0 +1,26 @@
+<h3>
+  <span class="app-section-title">Section {{ number() }}</span>
+  <button class="remove-btn" (click)="remove.emit()" [disabled]="!removable()">X</button>
+</h3>
+
+<div class="app-input-number">
+  @for (n of section().numbers; track n) {
+    <div>
+      <input
+        type="number"
+        [value]="n.value"
+        (change)="changeNumber($index, $event.target.valueAsNumber)"
+        class="app-input-number-item"
+      />
+      <button
+        class="remove-btn"
+        (click)="removeNumber($index)"
+        [disabled]="section().numbers.length === 1"
+      >
+        X
+      </button>
+    </div>
+  }
+  <button (click)="addNumber()">+ Add Input</button>
+  <div class="app-section-total">Total {{ total() | number }}</div>
+</div>
